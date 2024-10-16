@@ -1,0 +1,31 @@
+.LoginPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4; /* Keeping a light background for contrast */
+  }
+  
+  .loginPage p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .LoginPage input {
+    width: 100%;
+    max-width: 320px; /* Set a max width for inputs */
+    padding: 10px;
+    margin: 10px 0; /* Space between inputs */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .LoginPage input:focus {
+    border-color: #9c27b0; /* Lighter purple on focus */
+    outline: none;
+  }
+  

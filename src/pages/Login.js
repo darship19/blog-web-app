@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { auth } from '../firebase-config';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
+import "../Login.css"; // Make sure to import your CSS file
 
 function Login({ setIsAuth }) {
     let navigate = useNavigate();
@@ -9,19 +10,30 @@ function Login({ setIsAuth }) {
     const [password, setPassword] = useState("");  // State for password
     const [errorMessage, setErrorMessage] = useState("");  // State for handling errors
     const [isNewUser, setIsNewUser] = useState(false);  // Toggle between sign in and sign up
+    const [firstName, setFirstName] = useState("");  // State for first name (Added)
+    const [lastName, setLastName] = useState("");  // State for last name (Added)
 
     const handleAuth = () => {
         if (isNewUser) {
             // Sign up if the user is new
             createUserWithEmailAndPassword(auth, email, password)
                 .then((result) => {
-                    localStorage.setItem("isAuth", true);
-                    setIsAuth(true);
-                    navigate("/")
-                })
-                .catch((error) => {
+                    updateProfile(result.user,
+                        {
+                            displayName : `${firstName} ${lastName}`,
+                        }
+                    ).then(() =>{
+                        localStorage.setItem("isAuth", true);
+                        setIsAuth(true);
+                        navigate("/")
+
+                    }).catch((error) => {
                     setErrorMessage(error.message);
                 });
+            })
+            .catch((error) => {
+                setErrorMessage(error.message);
+            });
         } else {
             // Sign in if the user is existing
             signInWithEmailAndPassword(auth, email, password)
@@ -38,7 +50,24 @@ function Login({ setIsAuth }) {
 
     return (
         <div className="LoginPage">
-            <p>{isNewUser ? "Sign up with email and password" : "Sign in using email and password to continue"}</p>
+            {isNewUser &&
+            (
+                <>
+                <input
+                    type="text"
+                    placeholder="First Name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Last Name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                />
+            </>
+
+            )}
             
             <input 
                 type="email" 
@@ -53,14 +82,15 @@ function Login({ setIsAuth }) {
                 onChange={(e) => setPassword(e.target.value)} 
             />
             <button className="auth-btn" onClick={handleAuth}>
-                {isNewUser ? "Sign up with Email" : "Sign in with Email"}
+                {isNewUser ? "Sign up" : "Sign in"}
             </button>
 
             <button onClick={() => setIsNewUser(!isNewUser)}>
-                {isNewUser ? "Already have an account? Sign in" : "New user? Sign up"}
+                {isNewUser ? "Already have an account?" : "New user?"}
             </button>
 
-            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} {/* Display error */}
+            {errorMessage && <p className="errorMessage">{errorMessage}</p>}
+
         </div>
     );
 }

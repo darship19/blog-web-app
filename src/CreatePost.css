@@ -1,0 +1,75 @@
+.createPostPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f0f0f0; /* Light background color */
+    padding: 20px;
+}
+
+.cpContainer {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 500px; /* Maximum width for the container */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; /* Dark text color */
+}
+
+.inputGp {
+    margin-bottom: 20px; /* Space between inputs */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.inputField,
+.textareaField {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Light border color */
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.inputField:focus,
+.textareaField:focus {
+    border-color: #007bff; /* Change border color on focus */
+    outline: none; /* Remove outline */
+}
+
+.textareaField {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px; /* Minimum height for textarea */
+}
+
+.submitButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submitButton:disabled {
+    background-color: #ccc; /* Gray color when disabled */
+    cursor: not-allowed; /* Change cursor when disabled */
+}
+
+.submitButton:hover:not(:disabled) {
+    background-color: #0056b3; /* Darker shade on hover */
+}
