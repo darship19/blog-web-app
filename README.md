@@ -1,4 +1,4 @@
-# Project Title
+# Blog App
 
 ![Project Screenshot](image/image.png) <!-- Replace with your image path -->
 
