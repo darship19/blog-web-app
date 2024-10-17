@@ -1,5 +1,7 @@
 # Project Title
 
+![Project Screenshot](image/image.png) <!-- Replace with your image path -->
+
 ## Description
 A brief description of your project, what it does, and its purpose. This application is a web-based platform allowing users to create posts, view profiles, and search for content. It features user authentication using Firebase for secure sign-in and sign-out functionality.
 
