@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from './firebase-config';
+import './Nav.css';
 
 const Nav = ({ isAuth, setIsAuth }) => {
   const signUserOut = () => {
@@ -15,7 +16,10 @@ const Nav = ({ isAuth, setIsAuth }) => {
 
   return (
     <nav>
-      <Link to="/">Home</Link>
+      <Link to="/">
+      <i className="fas fa-home"></i>{/*Home icon */}
+
+      </Link>
 
       <form onSubmit={(e) => e.preventDefault()} className="searchForm"> {/* Add search form */}
         <input
@@ -27,12 +31,22 @@ const Nav = ({ isAuth, setIsAuth }) => {
       </form>
 
       {!isAuth ? (
-        <Link to="/login">Login</Link>
+        <Link to="/login">
+          <i className='fas fa-sign-in-alt'></i>
+        </Link>
       ) : (
         <>
-          <Link to="/createpost">Create Post</Link>
-          <Link to="/profile">Profile</Link>
-          <button onClick={signUserOut}>Log Out</button>
+          <Link to="/createpost" className='createPostButton'>
+          <i className='fas fa-pen'></i>
+            </Link>
+
+
+          <Link to="/profile">
+          <i className='fas fa-user'></i></Link>
+
+          <button onClick={signUserOut}>
+            <i className='fas fa-sign-out-alt'></i>
+          </button>
         </>
       )}
     </nav>

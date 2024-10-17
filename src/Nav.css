@@ -1,0 +1,30 @@
+/* Nav.css */
+
+/* Style for the floating "Create Post" button */
+.createPostButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff; /* Blue color */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 24px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .createPostButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  .createPostButton i {
+    pointer-events: none; /* Prevent click on the icon, only the button */
+  }
+  
